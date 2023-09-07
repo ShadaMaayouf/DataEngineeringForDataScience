@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/class-diagram
+' Ein Department hat mehrere Projekte, aber ein Projekt ist immer genau einem Department zugeordnet
+  'Ein Department hat viele Mitarbeiter, aber ein Mitarbeiter ist nur einem Department zugeordnet
+hide circle
+hide members
+show fields
+
+class "Department" as d {
+    * **id : int <<PK>>**
+    * name : string
+    * city : string
+    * zip_code : int
+}
+
+class "Projects" as p{
+   * <color:Tomato>**id : int <<PK>>**</color>
+   * **department_id: int <<FK>>**
+   * title: string
+   * proj_image: string
+   * budget: float
+   * start_date: string
+   * end_date: string
+}
+
+class "Employees" as e {
+   * **id : int <<PK>>**
+    * <color:Tomato>**department_id: int <<FK>>**</color>
+    * age : int
+    * department : string
+    * gender : string
+    * education : string
+    * recruitment_type : string
+    * job_level : int
+    * rating : string
+    * awards : int
+    * certifications : int
+    * salary : float
+    * entry_date : string
+    * satisfied : int
+}
+
+'d "1" -- "0..*" e : has >
+'d "1" -- "0..*" p : has >
+
+
+
+@enduml
